@@ -1,0 +1,59 @@
+11/2
+- Static Trap bugs fixed and model imported.
+- Static Trap cost changed to $20.
+
+10/31
+- Static Trap was added.
+- Rescaled and corrected positions for models of level 2 towers.
+- Changed models for mortar tower and added a firing animation.
+
+
+10/26
+- Added a transparent model of the current tower selected.
+- Rescaled and corrected positions for models of level 1 towers.
+
+10/25 (Overall total time was 4 hours)
+- Changed flame particles to be more visible
+- Buffed Flame Tower's attack speed and damage
+- Nerfed Mortar's attack speed.
+- Changed cannonball mechanic to instantly explode on clicked spot.
+- Changed cannonball's damage and explosion radius.
+- Added hover over UI elements for the shop.
+- Added upgrade hotkey (the Q key)
+
+
+10/12
+- Added flame particles to the flame projectiles.
+
+- Added Mortar tower
+	- Fires a mortar at the location of it's target. When it collides into anything, it will explode dealing area of effect damage.
+	- Fires at a rate of 1 shot per second.
+	- Costs $200.
+	
+
+10/9/17
+- Added Traps into the game.
+	- Spike traps
+		- Damages enemy by 5 when ran over. Has 3 uses before it disappears.
+	- Oil traps
+		- Slows enemies when ran over. Has 10 uses before it disappears.
+
+- Added Flame Tower
+	- Flame Tower deals Area of effect damage.
+	- Enemies who are slowed by Oil trap recieves bonus damage.
+	- Fires at a rate of 1 shot per 2 seconds.
+	- Costs $150.
+
+10/4/17
+
+- Fixed rotations when upgrading.
+	- Before, it would reset the rotations on the tower when upgrading.
+	- Now, it will retain the same rotations of the tower.
+
+- Added new functionality on the wave spawner.
+	- It is no longer an endless wave spawner.
+	- It has a set amount of waves and takes in an enemy type to spawn.
+	- It spawns a certain amount of enemies based on "count". i.e count = 4 means that it will spawn 4.
+	- The rate is how fast it spawns. The higher the rate, the faster it will spawn.
+	- Once the wave reaches the end of its array and there are no more enemies remaining, victory debug will appear.
+
