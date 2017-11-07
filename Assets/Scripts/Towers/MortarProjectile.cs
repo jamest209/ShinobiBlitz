@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MortarProjectile : MonoBehaviour {
-
+    [HideInInspector]
     public float current_timer = 0f;
     public Color explosion_color;
     public int damage = 15;
+    public float rotation_speed = 10f;
+    [HideInInspector]
     public MortarTower mortar_scr;
+    [HideInInspector]
     public Vector3 destination;
-    public float duration = 1f;
+    private float duration = 0.8f;
     private Vector3 start_pos;
     private Transform end_pos;
     private float start_time;
     private float length;
     private float distance;
     private bool stop_chasing = false;
+    public GameObject mortarshell_model;
+    private MeshRenderer m_render;
+
+    
 
 
     private Renderer rendr; //the renderer to change the color of the cannonball on explosion.
@@ -35,6 +42,8 @@ public class MortarProjectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        mortarshell_model.SetActive(false);
+        m_render.enabled = true;
         exploding = true;
         rb.isKinematic = true;
         rendr.material.color = explosion_color;
@@ -61,6 +70,7 @@ public class MortarProjectile : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody>();
         rendr = GetComponent<Renderer>();
+        m_render = GetComponent<MeshRenderer>();
         start_pos = transform.position;
         start_time = Time.time;
         destination = end_pos.position;
@@ -77,8 +87,14 @@ public class MortarProjectile : MonoBehaviour {
                 stop_chasing = true;
             }
         }
-        
-        if(destination != null && !stop_chasing)
+
+        Transform temp = mortarshell_model.transform;
+        //temp.rotation.x += rotation_speed;
+
+
+
+
+        if (destination != null && !stop_chasing)
         {
             Vector3 center = (start_pos + destination) * 0.5F;
             center -= new Vector3(0, 1, 0);
