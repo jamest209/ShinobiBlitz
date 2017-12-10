@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArcherTower : MonoBehaviour {
 
     private Transform target;
-    public float range = 10f;
+    public float range = 5f;
     public Transform rotation_part;
     public float rotation_speed = 5f;
 
@@ -44,9 +44,13 @@ public class ArcherTower : MonoBehaviour {
             }
         }
 
-        if (closest_enemy != null && closest_distance <= range)
+        if (closest_enemy != null && closest_distance <= range) //checks the closest enemy and makes sure they are within range
         {
-            target = closest_enemy.transform;
+            target = closest_enemy.transform; //if they are in range, then this target will set the target to it.
+        }
+        else
+        {
+            target = null; //if the closest enemy is not within range, then target is set to null.
         }
     }
 
@@ -87,9 +91,4 @@ public class ArcherTower : MonoBehaviour {
         fire_countdown -= Time.deltaTime;
 	}
 
-    void OnDrawGizmosSelected ()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
 }

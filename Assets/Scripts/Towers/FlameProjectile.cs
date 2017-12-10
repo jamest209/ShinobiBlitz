@@ -41,7 +41,7 @@ public class FlameProjectile : MonoBehaviour {
             {
                 enemy_script.ReceiveDamage(damage);
             }
-
+            enemy_script.GetBurned();
         }
 
         if (col.gameObject.tag == "Enemy2")
@@ -59,6 +59,7 @@ public class FlameProjectile : MonoBehaviour {
             {
                 enemy_script2.ReceiveDamage(damage);
             }
+            enemy_script2.GetBurned();
         }
     }
 }

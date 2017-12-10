@@ -18,14 +18,15 @@ public class bullet : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        GameObject effect = (GameObject)Instantiate(damage_effect, transform.position, transform.rotation);
-        Destroy(effect, 1f);
+        
 
         //Destroy(col.gameObject);
         if(col != null)
         { 
             if(col.gameObject.tag == "Enemy")
-            { 
+            {
+                GameObject effect = (GameObject)Instantiate(damage_effect, transform.position, transform.rotation);
+                Destroy(effect, 1f);
                 enemy_script = col.GetComponent<enemy>();
                 enemy_script.ReceiveDamage(damage);
                 Destroy(gameObject);
@@ -33,15 +34,28 @@ public class bullet : MonoBehaviour {
 
             if (col.gameObject.tag == "Enemy2")
             {
+                GameObject effect = (GameObject)Instantiate(damage_effect, transform.position, transform.rotation);
+                Destroy(effect, 1f);
                 enemy_script2 = col.GetComponent<enemy2>();
                 enemy_script2.ReceiveDamage(damage);
                 Destroy(gameObject);
             }
+
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
+
     }
-	
-	void Update ()
+
+    private void Start()
+    {
+        transform.parent = GameObject.Find("BuildList").transform;
+    }
+
+    void Update ()
     {
         if (target == null)
         {

@@ -7,7 +7,6 @@ public class MortarProjectile : MonoBehaviour {
     public float current_timer = 0f;
     public Color explosion_color;
     public int damage = 15;
-    public float rotation_speed = 10f;
     [HideInInspector]
     public MortarTower mortar_scr;
     [HideInInspector]
@@ -21,9 +20,6 @@ public class MortarProjectile : MonoBehaviour {
     private bool stop_chasing = false;
     public GameObject mortarshell_model;
     private MeshRenderer m_render;
-
-    
-
 
     private Renderer rendr; //the renderer to change the color of the cannonball on explosion.
     [HideInInspector]
@@ -42,24 +38,29 @@ public class MortarProjectile : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        mortarshell_model.SetActive(false);
-        m_render.enabled = true;
-        exploding = true;
-        rb.isKinematic = true;
-        rendr.material.color = explosion_color;
-
         if (col.gameObject.tag == "Enemy" || col.gameObject.tag == "Enemy2" || col.gameObject.tag == "Pathway")
         {
+            mortarshell_model.SetActive(false);
+            m_render.enabled = true;
+            exploding = true;
+            rb.isKinematic = true;
+            rendr.material.color = explosion_color;
+
             if (col.gameObject.tag == "Enemy")
             {
                 enemy_script = col.GetComponent<enemy>();
                 enemy_script.ReceiveDamage(damage);
             }
 
-            if (col.gameObject.tag == "Enemy2")
+            else if (col.gameObject.tag == "Enemy2")
             {
                 enemy_script2 = col.GetComponent<enemy2>();
                 enemy_script2.ReceiveDamage(damage);
+            }
+
+            else
+            {
+                //add fix here if necessary
             }
         }
     }
@@ -75,26 +76,24 @@ public class MortarProjectile : MonoBehaviour {
         start_time = Time.time;
         destination = end_pos.position;
         Destroy(gameObject, 5f);
+        transform.parent = GameObject.Find("BuildList").transform;
     }
 
     void Update()
     {
-        if(destination != null)
+
+        distance = Vector3.Distance(transform.position, destination);
+        if (distance < 0.2f)
         {
-            distance = Vector3.Distance(transform.position, destination);
-            if (distance < 0.2f)
-            {
-                stop_chasing = true;
-            }
+            stop_chasing = true;
         }
 
-        Transform temp = mortarshell_model.transform;
-        //temp.rotation.x += rotation_speed;
+        
 
 
 
 
-        if (destination != null && !stop_chasing)
+        if (!stop_chasing)
         {
             Vector3 center = (start_pos + destination) * 0.5F;
             center -= new Vector3(0, 1, 0);
@@ -113,7 +112,7 @@ public class MortarProjectile : MonoBehaviour {
         if (exploding)
         {
             current_timer += Time.deltaTime;
-            transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            transform.localScale += new Vector3(5.5f, 5.5f, 5.5f) * Time.deltaTime;
             if (current_timer > .4f)
             {
                 Destroy(gameObject);

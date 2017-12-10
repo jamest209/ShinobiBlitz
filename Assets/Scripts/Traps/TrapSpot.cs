@@ -9,7 +9,7 @@ public class TrapSpot : MonoBehaviour
     public Color hover_color; //the color of the spot once the player hovers the cursor over this building spot.
     public Color insufficient_color; //the color of the spot if the player hovers the cursor over this building spot and doesn't have enough money.
     private Color original_color; //the first color of the node. this is used to return the color back once the player isn't hovering over the node.
-
+    private float trap_destroy_time = 20f; //the amount of time traps last before it is destroyed.
     public Vector3 offset; //the offset to properly build the turret ontop of this spot.
     private Renderer rendr; //the renderer to change the color of the building spot.
 
@@ -39,7 +39,9 @@ public class TrapSpot : MonoBehaviour
         //otherwise, remove their money from the cost and build them the tower.
         PlayerStats.money -= _blueprint.cost;
         GameObject _trap = (GameObject)Instantiate(_blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        _trap.transform.parent = GameObject.Find("BuildList").transform;
         trap = _trap;
+        Destroy(_trap, trap_destroy_time);
 
         trap_blueprint = _blueprint;
 

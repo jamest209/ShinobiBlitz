@@ -25,7 +25,7 @@ public class PathwaySpots : MonoBehaviour {
     {
         CannonManager_script.can_fire = false;
         //fire a cannonball prefab
-        GameObject c_ball = (GameObject)Instantiate(cannonball_prefab, GetFirePosition(), Quaternion.identity);
+        Instantiate(cannonball_prefab, GetFirePosition(), Quaternion.identity);
         CannonManager_script.current_timer = CannonManager_script.cooldown_timer;
     }
 
@@ -65,7 +65,6 @@ public class PathwaySpots : MonoBehaviour {
 
         if (!CannonManager_script.CanFire())
         {
-            Debug.Log("Cant fire yet.");
             return;
         }
         Fire(this);

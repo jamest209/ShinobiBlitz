@@ -1,3 +1,57 @@
+12/2 (6 hours)
+- Created how to play screens in photoshop.
+- Created "instructions" and "next" buttons.
+- Added level looping.
+- Added level 5.
+- Debugged all of level 5's pathway and building spots.
+- Changed the collision of mortars to be able to shoot through environments.
+- Balancing levels and enemy stats.
+
+
+12/1 (10+ hours)
+- Implemented trees, rocks, wall, and castle assets.
+- Created environmental functionality to prevent projectiles from shooting through trees, rocks, and walls.
+- Worked on level design for each level to add trees and rocks.
+- Worked on making sure all levels were consistent in game objects, pathing, and increasing difficulty.
+- Added a speeding up feature while the player holds down the left-ctrl.
+- Changed all of the button's images.
+- Fixed all of the PNGs and JPGs to properly fit each button or screen.
+- Photoshopped the main menu then implemented it into the game.
+- Fixed all of the buttons from main menu, victory, defeat, and shop UIs.
+- Bug fixes. (can't start at beginning after restarting, unpausing the game after pressing a button from pause menu, etc)
+
+11/24 (2 hours)
+- Changed the flame particle effects for the projectiles of flame towers to more accurately show the hitboxes.
+- Added pause screen and functionality.
+
+
+11/22 (5 hours)
+- Added tower amount limitations. Only a certain number of towers may be built per level.
+- Added text display for tower amount and max of level at the bottom of the world canvas UI.
+- Separated trap building from tower building.
+	- Towers may only be built in between waves (when enemies aren't present).
+	- Traps may only be built while enemies are running. Traps only last 20 seconds after bought.
+- Added flame tower functionality. It now burns the enemies and while enemies are burned, they take continuous damage,
+- Changed the layout of the building buttons UI to align vertically on the left side of the screen.
+
+
+11/14 - 11/17
+- Playtesting and receiving feedback from the playtesters.
+
+
+11/13
+- Added all of the enemy models and their rotation functionality to give a sense of direction.
+- Added level 2 and 3.
+- Fixed minor issues with level layout of level 2 and 3.
+
+11/10
+- Added mortar projectile and animations to rotation and movement.
+- Added Victory and Defeat screens.
+
+11/7
+- Added mortar model and cannon animations.
+- Changed level 1 layout.
+
 11/2
 - Static Trap bugs fixed and model imported.
 - Static Trap cost changed to $20.
@@ -12,7 +66,7 @@
 - Added a transparent model of the current tower selected.
 - Rescaled and corrected positions for models of level 1 towers.
 
-10/25 (Overall total time was 4 hours)
+10/25 (4 hours)
 - Changed flame particles to be more visible
 - Buffed Flame Tower's attack speed and damage
 - Nerfed Mortar's attack speed.

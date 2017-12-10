@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -67,17 +70,18 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy\LookAt.cs" />
     <Compile Include="Assets\Scripts\Enemy\Wave.cs" />
     <Compile Include="Assets\Scripts\Enemy\enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\enemy2.cs" />
@@ -86,17 +90,21 @@
     <Compile Include="Assets\Scripts\Enemy\waypoints2.cs" />
     <Compile Include="Assets\Scripts\Managers\CannonManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Managers\buildmanager.cs" />
     <Compile Include="Assets\Scripts\Managers\shop.cs" />
     <Compile Include="Assets\Scripts\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Towers\ArcherTower.cs" />
     <Compile Include="Assets\Scripts\Towers\Cannonball.cs" />
+    <Compile Include="Assets\Scripts\Towers\ClickTower.cs" />
     <Compile Include="Assets\Scripts\Towers\FlameDetection.cs" />
     <Compile Include="Assets\Scripts\Towers\FlameProjectile.cs" />
     <Compile Include="Assets\Scripts\Towers\FlameTower.cs" />
     <Compile Include="Assets\Scripts\Towers\MortarProjectile.cs" />
     <Compile Include="Assets\Scripts\Towers\MortarTower.cs" />
     <Compile Include="Assets\Scripts\Towers\PathwaySpots.cs" />
+    <Compile Include="Assets\Scripts\Towers\RotateDown.cs" />
     <Compile Include="Assets\Scripts\Towers\SLauncher.cs" />
     <Compile Include="Assets\Scripts\Towers\TurretBlueprint.cs" />
     <Compile Include="Assets\Scripts\Towers\bullet.cs" />
@@ -110,7 +118,9 @@
     <Compile Include="Assets\Scripts\UI\LivesUI.cs" />
     <Compile Include="Assets\Scripts\UI\MoneyUI.cs" />
     <Compile Include="Assets\Scripts\UI\MouseOverText.cs" />
+    <Compile Include="Assets\Scripts\UI\Pause.cs" />
     <Compile Include="Assets\Scripts\UI\RetryButton.cs" />
+    <Compile Include="Assets\Scripts\UI\SupplyUI.cs" />
     <Compile Include="Assets\Scripts\UI\TurretUI.cs" />
     <Compile Include="Assets\Scripts\camera.cs" />
   </ItemGroup>

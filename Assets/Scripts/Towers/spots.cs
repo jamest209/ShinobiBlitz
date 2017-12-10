@@ -26,6 +26,8 @@ public class spots : MonoBehaviour {
 
     buildmanager buildmanager_script; //used to access the build manager script
 
+    public ClickTower click_scr;
+
     public Vector3 GetBuildPosition() //this will give the build position of where to place the turret.
     {
         //this will give the position of this spot with the additional offset to give the proper building spot.
@@ -35,9 +37,9 @@ public class spots : MonoBehaviour {
     void BuildTurret(TurretBlueprint _blueprint)
     {
         //check if the player has enough money to build. otherwise nothing happens and an error message happens.
-        if (PlayerStats.money < _blueprint.cost)
+        if (PlayerStats.money < _blueprint.cost || PlayerStats.building_amount >= PlayerStats.building_limit)
         {
-            Debug.Log("Not enough money to build.");
+            //Debug.Log("Not enough money to build.");
             return;
         }
 
@@ -45,10 +47,14 @@ public class spots : MonoBehaviour {
         Destroy(previewed_tower);
         PlayerStats.money -= _blueprint.cost;
         GameObject _tower = (GameObject)Instantiate(_blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        _tower.transform.parent = GameObject.Find("BuildList").transform;
         tower = _tower;
 
-        turret_blueprint = _blueprint;
+        click_scr = tower.GetComponent<ClickTower>();
+        click_scr.pass_spots(this);
 
+        turret_blueprint = _blueprint;
+        PlayerStats.building_amount++;
     }
 
     public void UpgradeTurret()
@@ -56,7 +62,6 @@ public class spots : MonoBehaviour {
         //check if the player has enough money to upgrade. otherwise nothing happens and an error message happens.
         if (PlayerStats.money < turret_blueprint.upgrade_cost)
         {
-            Debug.Log("Not enough money to upgrade.");
             return;
         }
 
@@ -68,7 +73,11 @@ public class spots : MonoBehaviour {
             Destroy(tower);
             PlayerStats.money -= turret_blueprint.upgrade_cost;
             GameObject _tower = (GameObject)Instantiate(turret_blueprint.upgraded_prefab, GetBuildPosition(), Quaternion.identity);
+            _tower.transform.parent = GameObject.Find("BuildList").transform;
             tower = _tower;
+
+            click_scr = tower.GetComponent<ClickTower>();
+            click_scr.pass_spots(this);
 
             for (int i = 0; i < times_rotated; i++)
             {
@@ -107,6 +116,12 @@ public class spots : MonoBehaviour {
         is_upgraded = false;
         //sets the blueprint to null because there is no current tower on this spot.
         turret_blueprint = null;
+
+        click_scr = null;
+
+        PlayerStats.building_amount--;
+        if (PlayerStats.building_amount < 0)
+            PlayerStats.building_amount = 0;
     }
 
     void OnMouseEnter()
@@ -120,9 +135,10 @@ public class spots : MonoBehaviour {
             return;
 
         //if the player has enough money to build, then it will change the color of the spot to grey.
-        if(buildmanager_script.HasMoney && tower == null)
+        if(buildmanager_script.HasMoney && tower == null && PlayerStats.building_amount < PlayerStats.building_limit)
         {
             rendr.material.color = hover_color;
+
             if(shop.archer_selected)
                 previewed_tower = Instantiate(preview_archer, GetBuildPosition(), transform.rotation);
             else if (shop.slauncher_selected)
@@ -139,6 +155,7 @@ public class spots : MonoBehaviour {
         }
     }
 	
+
     void OnMouseExit()
     {
         //once the player no longer hovers over the building spot, return to its original color.
@@ -178,6 +195,27 @@ public class spots : MonoBehaviour {
         //save the original color information.
         original_color = rendr.material.color;
 
+    }
+
+    public void Click()
+    {
+        //blocks the player if they are hovering over a UI overlay.
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
+        //if there is already a turret, then it will select the node instead.
+        if (tower != null)
+        {
+            buildmanager_script.SelectNode(this);
+            return;
+        }
+
+        //if the player aren't able to build, then exit out now.
+        if (!buildmanager_script.CanBuild)
+            return;
+
+        //otherwise, build the selected turret on top of this node.
+        BuildTurret(buildmanager_script.GetTurretToBuild());
     }
 
 }

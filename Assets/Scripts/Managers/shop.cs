@@ -11,6 +11,7 @@ public class shop : MonoBehaviour {
     public TrapBlueprint spike_trap;
     public TrapBlueprint oil_trap;
     public TrapBlueprint static_trap;
+    public TrapBlueprint bomb_trap;
 
     public static bool archer_selected, slauncher_selected, flame_selected, mortar_selected;
 
@@ -78,6 +79,15 @@ public class shop : MonoBehaviour {
     public void SelectStaticTrap()
     {
         buildmanager_script.SelectTrapToBuild(static_trap);
+        archer_selected = false;
+        slauncher_selected = false;
+        flame_selected = false;
+        mortar_selected = false;
+    }
+
+    public void SelectBombTrap()
+    {
+        buildmanager_script.SelectTrapToBuild(bomb_trap);
         archer_selected = false;
         slauncher_selected = false;
         flame_selected = false;

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     public static bool win_game = false;
 
     public static bool game_ended;
+    public int level_number;
+    public GameObject[] levels;
 
     void Start()
     {
@@ -28,19 +30,13 @@ public class GameManager : MonoBehaviour {
             GameOverUI.SetActive(true);
             game_ended = true;
         }
-
-        if(win_game)
+        else if(win_game)
         {
             Victory();
             win_game = false;
         }
 
-        if(Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !Pause.paused)
         {
             wavespawner.check_to_start_wave = true;
         }

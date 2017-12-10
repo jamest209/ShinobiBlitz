@@ -81,7 +81,7 @@ public class TurretUI : MonoBehaviour {
             {
                 target.RotateTurret();
             }
-            if(Input.GetKeyDown(KeyCode.X))
+            if(Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.C))
             {
                 buildmanager.S.DeselectNode();
                 selected = false;

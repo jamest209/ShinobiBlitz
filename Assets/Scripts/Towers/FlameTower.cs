@@ -16,7 +16,7 @@ public class FlameTower : MonoBehaviour {
 
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(flame_prefab, spawn_point.position, spawn_point.rotation);
+        Instantiate(flame_prefab, spawn_point.position, spawn_point.rotation);
     }
 
     void UpdateTarget()
@@ -60,7 +60,7 @@ public class FlameTower : MonoBehaviour {
 
     private void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.15f);
+        InvokeRepeating("UpdateTarget", 0f, 0.05f);
     }
 
     void Update()
@@ -75,11 +75,5 @@ public class FlameTower : MonoBehaviour {
         }
 
         fire_countdown -= Time.deltaTime;
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

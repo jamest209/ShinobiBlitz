@@ -68,8 +68,6 @@ public class buildmanager : MonoBehaviour {
         shop.mortar_selected = false;
     }
 
-
-
     public void DeselectNode()
     {
         selected_node = null;
@@ -78,5 +76,11 @@ public class buildmanager : MonoBehaviour {
         shop.slauncher_selected = false;
         shop.flame_selected = false;
         shop.mortar_selected = false;
+    }
+
+    public void ResetSelection()
+    {
+        build_turret = null;
+        build_trap = null;
     }
 }

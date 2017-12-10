@@ -21,6 +21,7 @@ public class shuriken : MonoBehaviour {
     {
         Destroy(gameObject, .45f);
         dir = target.position - transform.position;
+        transform.parent = GameObject.Find("BuildList").transform;
     }
 
     void OnTriggerEnter(Collider col)
@@ -29,23 +30,24 @@ public class shuriken : MonoBehaviour {
         { 
             GameObject effect = (GameObject)Instantiate(damage_effect, transform.position, transform.rotation);
             Destroy(effect, 1f);
-
-            
             enemy_script = col.GetComponent<enemy>();
             enemy_script.ReceiveDamage(damage);
 
             Destroy(gameObject);
         }
 
-        if (col.gameObject.tag == "Enemy2")
+        else if (col.gameObject.tag == "Enemy2")
         {
             GameObject effect = (GameObject)Instantiate(damage_effect, transform.position, transform.rotation);
             Destroy(effect, 1f);
-
-           
             enemy_script2 = col.GetComponent<enemy2>();
             enemy_script2.ReceiveDamage(damage);
 
+            Destroy(gameObject);
+        }
+
+        else
+        {
             Destroy(gameObject);
         }
     }

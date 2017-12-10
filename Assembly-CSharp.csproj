@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{98B6FB3A-7ADD-BF51-90FD-10CD54872425}</ProjectGuid>
+    <ProjectGuid>{4A987316-FD75-2838-6F65-6BB560C5934B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -39,13 +39,15 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity5.5/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity5.5/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Enemy\LookAt.cs" />
+     <Compile Include="Assets\Scripts\Enemy\Wave.cs" />
      <Compile Include="Assets\Scripts\Enemy\enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy\enemy2.cs" />
      <Compile Include="Assets\Scripts\Enemy\wavespawner.cs" />
@@ -53,39 +55,54 @@
      <Compile Include="Assets\Scripts\Enemy\waypoints2.cs" />
      <Compile Include="Assets\Scripts\Managers\CannonManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
      <Compile Include="Assets\Scripts\Managers\buildmanager.cs" />
      <Compile Include="Assets\Scripts\Managers\shop.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\Towers\ArcherTower.cs" />
      <Compile Include="Assets\Scripts\Towers\Cannonball.cs" />
+     <Compile Include="Assets\Scripts\Towers\FlameDetection.cs" />
+     <Compile Include="Assets\Scripts\Towers\FlameProjectile.cs" />
+     <Compile Include="Assets\Scripts\Towers\FlameTower.cs" />
+     <Compile Include="Assets\Scripts\Towers\MortarProjectile.cs" />
+     <Compile Include="Assets\Scripts\Towers\MortarTower.cs" />
      <Compile Include="Assets\Scripts\Towers\PathwaySpots.cs" />
+     <Compile Include="Assets\Scripts\Towers\RotateDown.cs" />
      <Compile Include="Assets\Scripts\Towers\SLauncher.cs" />
+     <Compile Include="Assets\Scripts\Towers\TurretBlueprint.cs" />
      <Compile Include="Assets\Scripts\Towers\bullet.cs" />
      <Compile Include="Assets\Scripts\Towers\shuriken.cs" />
      <Compile Include="Assets\Scripts\Towers\spots.cs" />
-     <Compile Include="Assets\Scripts\TurretBlueprint.cs" />
+     <Compile Include="Assets\Scripts\Traps\FreezeTrap.cs" />
+     <Compile Include="Assets\Scripts\Traps\OilTrap.cs" />
+     <Compile Include="Assets\Scripts\Traps\SpikeTrap.cs" />
+     <Compile Include="Assets\Scripts\Traps\TrapBlueprint.cs" />
+     <Compile Include="Assets\Scripts\Traps\TrapSpot.cs" />
      <Compile Include="Assets\Scripts\UI\LivesUI.cs" />
      <Compile Include="Assets\Scripts\UI\MoneyUI.cs" />
+     <Compile Include="Assets\Scripts\UI\MouseOverText.cs" />
+     <Compile Include="Assets\Scripts\UI\Pause.cs" />
      <Compile Include="Assets\Scripts\UI\RetryButton.cs" />
+     <Compile Include="Assets\Scripts\UI\SupplyUI.cs" />
      <Compile Include="Assets\Scripts\UI\TurretUI.cs" />
      <Compile Include="Assets\Scripts\camera.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity5.5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity5.5/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.PlaymodeTestsRunner">
- <HintPath>C:/Program Files/Unity5.5/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/PlaymodeTestsRunner/UnityEngine.PlaymodeTestsRunner.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity5.5/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>C:/Program Files/Unity5.5/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
- <HintPath>C:/Program Files/Unity5.5/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

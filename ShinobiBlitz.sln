@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShinobiBlitz", "ShinobiBlitz.csproj", "{9A3D8F35-CA7F-3F35-6A15-4C9A7226E101}"
 EndProject
 Global
